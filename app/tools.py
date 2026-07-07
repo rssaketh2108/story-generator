@@ -296,10 +296,14 @@ _PDF_W, _PDF_H, _PDF_MARGIN = 1240, 1754, 80
 
 def _load_font(size: int, bold: bool = False):
     candidates = [
+        # macOS
         "/System/Library/Fonts/Supplemental/Arial Bold.ttf" if bold else "/System/Library/Fonts/Supplemental/Arial.ttf",
         "/System/Library/Fonts/Supplemental/Arial.ttf",
         "/System/Library/Fonts/Helvetica.ttc",
         "/Library/Fonts/Arial.ttf",
+        # Linux — Liberation (Arial-metric) and DejaVu (installed in the Docker image)
+        "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf" if bold else "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",
+        "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",
         "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf" if bold else "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
         "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
     ]
@@ -309,7 +313,12 @@ def _load_font(size: int, bold: bool = False):
                 return ImageFont.truetype(p, size)
         except Exception:
             pass
-    return ImageFont.load_default()
+    # Last resort: Pillow's default font, but SIZED (Pillow >= 10.1) so text still scales
+    # instead of rendering as a tiny fixed bitmap.
+    try:
+        return ImageFont.load_default(size=size)
+    except TypeError:
+        return ImageFont.load_default()
 
 def _line_h(font) -> int:
     try:
@@ -336,7 +345,10 @@ def _load_display_font(size: int):
     """Heavy poster/comic display face (Impact-style) for the cover logo."""
     for p in ["/System/Library/Fonts/Supplemental/Impact.ttf",
               "/Library/Fonts/Impact.ttf",
-              "/System/Library/Fonts/Supplemental/Arial Black.ttf"]:
+              "/System/Library/Fonts/Supplemental/Arial Black.ttf",
+              # Linux fallbacks (installed in the Docker image)
+              "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",
+              "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"]:
         if os.path.exists(p):
             try:
                 return ImageFont.truetype(p, size)

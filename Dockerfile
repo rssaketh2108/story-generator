@@ -10,9 +10,14 @@ RUN npm run build
 FROM python:3.12-slim
 WORKDIR /app
 
-# Install build dependencies
+# Install build dependencies and fonts.
+# fonts-dejavu-core + fonts-liberation give the PDF renderer real scalable TrueType
+# fonts (matching the /usr/share/fonts paths the code looks for); without them Pillow
+# falls back to a tiny fixed bitmap and all PDF text renders microscopic.
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
+    fonts-dejavu-core \
+    fonts-liberation \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy uv binary for fast pip installations
