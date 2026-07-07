@@ -1,0 +1,18 @@
+{
+  "eval_cases": [
+    {
+      "eval_case_id": "cyberpunk_noir",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "A cyberpunk noir story about Kaelen Vance, a detective in Neo-Kyoto looking for his lost sister's digital ghost."}]
+      }
+    },
+    {
+      "eval_case_id": "reverse_gravity",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "A sci-fi story about a city built in a reverse gravity anomaly zone where towers hang upside down."}]
+      }
+    }
+  ]
+}

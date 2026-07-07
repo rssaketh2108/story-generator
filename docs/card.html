@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  :root{
+    --ground:#14161F; --paper:#ECE7D8; --muted:#9AA0B4; --red:#E8473B; --amber:#F2B441;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--ground)}
+  #card{
+    width:560px;height:280px;position:relative;overflow:hidden;color:var(--paper);
+    font-family:"Helvetica Neue","Avenir Next",Arial,sans-serif;
+    background:
+      radial-gradient(circle at 1px 1px, rgba(255,255,255,.05) 1px, transparent 0) 0 0/12px 12px,
+      radial-gradient(60% 90% at 50% 12%, rgba(232,71,59,.30), transparent 62%),
+      radial-gradient(70% 90% at 50% 108%, rgba(110,139,255,.22), transparent 60%),
+      var(--ground);
+    display:flex;align-items:center;justify-content:center;text-align:center;
+  }
+  /* faint square guide so the centered content survives a center-crop thumbnail */
+  .col{width:290px;display:flex;flex-direction:column;align-items:center;gap:0}
+  .disp{font-family:Impact,"Haettenschweiler","Arial Black",sans-serif;letter-spacing:.5px}
+  .kicker{font:800 11px/1 "Helvetica Neue";letter-spacing:2.5px;color:var(--red);text-transform:uppercase}
+  .t1{font-size:36px;line-height:.92;color:#fff;-webkit-text-stroke:1.5px #0c0d12;text-transform:uppercase;margin-top:12px}
+  .t2{font-size:70px;line-height:.82;color:var(--red);-webkit-text-stroke:2.5px #0c0d12;text-transform:uppercase}
+  .issue{font:800 11px/1 "Helvetica Neue";letter-spacing:3px;color:var(--amber);text-transform:uppercase;margin-top:12px}
+  .rule{width:150px;height:2px;background:var(--muted);opacity:.4;margin:9px 0}
+  .tag{font-size:14px;line-height:1.35;color:#d7d3c6;max-width:270px}
+  .credits{margin-top:12px;font:700 11px/1 "Helvetica Neue";letter-spacing:1px;color:var(--muted)}
+  .credits b{color:var(--paper)}
+</style>
+</head>
+<body>
+<div id="card">
+  <div class="col">
+    <div class="kicker">Multiagent Comic Studio</div>
+    <div class="t1 disp">The Writers'</div>
+    <div class="t2 disp">Room</div>
+    <div class="issue">Issue #1 · Google ADK + A2A</div>
+    <div class="rule"></div>
+    <div class="tag">Rival AI models debate your idea into a comic, with consistent characters.</div>
+    <div class="credits"><b>Claude</b> · <b>Codex</b> · <b>Kimi</b></div>
+  </div>
+</div>
+</body>
+</html>
