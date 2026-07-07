@@ -4,6 +4,9 @@
 
 **Track:** Freestyle
 
+**Try it live:** https://story-generator-ui-352241932029.us-east1.run.app
+**Code:** https://github.com/rssaketh2108/story-generator
+
 ---
 
 ## The Problem
@@ -83,6 +86,6 @@ The most valuable lessons came from debugging real failures of a multiagent syst
 
 ## Results and Future Work
 
-The system reliably takes a theme to a finished comic with consistent characters and captions, plus a downloadable PDF, all while showing the agents collaborating live. Natural next steps: a debate that loops until the room reaches consensus rather than a fixed number of rounds, location model sheets for scene continuity, and speech balloon lettering composited onto the art.
+The system reliably takes a theme to a finished comic with consistent characters and captions, plus a downloadable PDF, all while showing the agents collaborating live. It is deployed as a single public service on Google Cloud Run that serves both the UI and the API. Natural next steps: a debate that loops until the room reaches consensus rather than a fixed number of rounds, location model sheets for scene continuity, and speech balloon lettering composited onto the art.
 
 The Writers' Room shows that when a creative task is decomposed into a room of specialized, debating agents, with the right mix of emergent collaboration and deterministic orchestration, the result is both better and genuinely producible.
