@@ -145,7 +145,10 @@ def _nanobanana_generate(filepath, prompt, orientation, reference_paths=None):
     try:
         from google import genai
         from google.genai import types as genai_types
-        client = genai.Client(api_key=gemini_key)
+        # Force the AI Studio (Gemini Developer) API. Without this, a stray
+        # GOOGLE_GENAI_USE_VERTEXAI=True routes image calls to Vertex (aiplatform),
+        # where an AI Studio key is blocked (403 API_KEY_SERVICE_BLOCKED).
+        client = genai.Client(api_key=gemini_key, vertexai=False)
         contents = []
         existing_refs = [ _resolve_ref_path(p) for p in (reference_paths or []) ]
         existing_refs = [ p for p in existing_refs if os.path.exists(p) ]
